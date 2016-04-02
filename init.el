@@ -110,6 +110,8 @@
 (when *spell-check-support-enabled*
   (require 'init-spelling))
 
+(require 'init-rust)
+
 (require 'init-misc)
 
 (require 'init-dash)
