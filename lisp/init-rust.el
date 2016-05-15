@@ -4,7 +4,6 @@
 (require-package 'rust-mode)
 (require-package 'flycheck-rust)
 (require-package 'racer)
-(require-package 'ac-racer)
 (require-package 'rustfmt)
 (require-package 'cargo)
 
@@ -20,10 +19,10 @@
 (add-hook 'racer-mode-hook #'eldoc-mode)
 (add-hook 'rust-mode-hook 'cargo-minor-mode)
 (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+(add-hook 'racer-mode-hook #'company-mode)
 
-(defun my/racer-mode-hook ()
-  (ac-racer-setup))
-(add-hook 'racer-mode-hook 'my/racer-mode-hook)
+(global-set-key (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-tooltip-align-annotations t)
 
 ;; Use "M-x rustfmt-format-buffer" to format code
 ;; Bind key to fmt
